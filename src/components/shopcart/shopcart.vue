@@ -4,11 +4,11 @@
           <div class="content-left">
               <div class="logo-wrapper">
                   <div class="logo">
-                      <span class="icon-shopping_cart"></span>
+                      <i class="icon-shopping_cart"></i>
                   </div>
               </div>
-              <div class="price"></div>
-              <div class="desc"></div>
+              <div class="price">0元</div>
+              <div class="desc">另需配送费¥{{deliveryPrice}}元</div>
           </div>
           <div class="content-right"></div>
       </div>
@@ -17,10 +17,16 @@
 
 <script type="text/ecmascript-6">
 export default {
-  data() {
-    return {};
-  },
-  components: {}
+  props:{
+     deliveryPrice:{
+         type:Number,
+         default:0
+     },
+     minPrice:{
+         type:Number,
+         default:0
+     } 
+  }
 };
 </script>
 
@@ -43,6 +49,7 @@ export default {
 
             .logo-wrapper {
                 display: inline-block;
+                vertical-align: top;
                 position: relative;
                 top: -10px;
                 margin: 0 12px;
@@ -50,7 +57,6 @@ export default {
                 width: 56px;
                 height: 56px;
                 box-sizing: border-box;
-                vertical-align: top;
                 border-radius: 50%;
                 background: #141d27;
 
@@ -79,6 +85,16 @@ export default {
                 border-right: 1px solid rgba(255, 255, 255, 0.1);
                 font-size: 16px;
                 font-weight: 700;
+                color: rgba(255, 255, 255, 0.4);
+            }
+
+            .desc {
+                display: inline-block;
+                vertical-align: top;
+                margin: 12px 0 0 12px;
+                line-height: 24px;
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 10px;
             }
         }
 
