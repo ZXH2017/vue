@@ -6,9 +6,9 @@
 
 <script type="text/ecmascript-6">
 const LENGTH = 5;
-const CLS_ON = "on";
-const CLS_HALF = "half";
-const CLS_OFF = "off";
+const CLS_ON = 'on';
+const CLS_HALF = 'half';
+const CLS_OFF = 'off';
 
 export default {
   props: {
@@ -24,7 +24,7 @@ export default {
   computed: {
     //计算属性
     starType() {
-      return "star-" + this.size;
+      return 'star-' + this.size;
     },
     itemClasses() {
       let result = [];
