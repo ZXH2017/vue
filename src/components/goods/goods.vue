@@ -27,6 +27,9 @@
                 <div class="price">
                   <span class="now">¥{{food.price}}</span><span class="old" v-show="food.oldPrice">¥{{food.oldPrice}}</span>
                 </div>
+                <div class="cartcontrol-warpper">
+                  <cartcontrol :food="food"></cartcontrol>
+                </div>
               </div>
             </li>
           </ul>
@@ -41,6 +44,7 @@
 <script type="text/ecmascript-6">
 import BScroll from "better-scroll";
 import shopcart from "components/shopcart/shopcart";
+import cartcontrol from "components/cartcontrol/cartcontrol";
 const ERR_OK = 0;
 export default {
   props: {
@@ -82,19 +86,22 @@ export default {
     });
   },
   methods: {
-    selectMenu(index,event){
-      if(!event._constructed){
+    selectMenu(index, event) {
+      if (!event._constructed) {
         return;
       }
-      let foodList=this.$refs.foodsWrapper.getElementsByClassName("foot-list-hook");
-      let el=foodList[index];
-      this.foodsScroll.scrollToElement(el,300);
+      let foodList = this.$refs.foodsWrapper.getElementsByClassName(
+        "foot-list-hook"
+      );
+      let el = foodList[index];
+      this.foodsScroll.scrollToElement(el, 300);
     },
     _initScroll() {
       this.menuScroll = new BScroll(this.$refs.menuWrapper, {
-        click:true
+        click: true
       });
       this.foodsScroll = new BScroll(this.$refs.foodsWrapper, {
+        click: true,
         probeType: 3
       });
       this.foodsScroll.on("scroll", pos => {
@@ -114,8 +121,9 @@ export default {
       }
     }
   },
-  components:{
-    shopcart
+  components: {
+    shopcart,
+    cartcontrol
   }
 };
 </script>
@@ -267,6 +275,12 @@ export default {
             font-size: 10px;
             color: rgb(147, 153, 159);
           }
+        }
+
+        .cartcontrol-warpper {
+          position: absolute;
+          right: 0;
+          bottom: 12px;
         }
       }
     }
